@@ -222,7 +222,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (nextLink) nextLink.setAttribute('href', targetUrl);
         if (nextTitle) nextTitle.textContent = nextProject.title;
-        if (nextImg) nextImg.src = nextProject.imageHero;
+      // Injecte l'imageHero du projet suivant
+    if (nextImg && nextProject.imageHero) {
+        nextImg.src = nextProject.imageHero;
+  
+    }
     }
 
     // --- 5. INTERSECTION OBSERVER ---
