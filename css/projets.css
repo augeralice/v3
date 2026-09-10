@@ -29,15 +29,12 @@
     gap: 12px;
     font-family: var(--font-sans);
     font-size: clamp(0.75rem, 1.2vw, 0.85rem);
-    /* Taille légèrement augmentée */
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: rgba(255, 255, 255, 0.85);
-    /* Opacité augmentée pour la lisibilité */
     text-decoration: none;
     position: relative;
     padding: 12px 10px;
-    /* Agrandit la zone de capture */
     transition: color var(--transition-fast), gap var(--transition-fast);
 }
 
@@ -60,7 +57,6 @@
     border-left: 1px solid currentColor;
     border-bottom: 1px solid currentColor;
     transform: rotate(45deg);
-
 }
 
 /* Hero Contenu Texte — aéré : le titre respire avant l'image */
@@ -110,7 +106,6 @@
     overflow: hidden;
     position: relative;
     border-radius: 2px;
-
 }
 
 /* Image ajustée au conteneur */
@@ -205,9 +200,7 @@
     margin-top: 18px;
 }
 
-
 /* ── GALERIE BENTO / MASONRY GRID ────────────────────────────────────────── */
-
 .project-gallery {
     max-width: 1600px;
     margin-inline: auto;
@@ -218,7 +211,7 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: clamp(12px, 1.5vw, 24px);
-    grid-auto-flow: dense; /* Remplit automatiquement les espaces vides */
+    grid-auto-flow: dense;
 }
 
 .project-grid-item {
@@ -246,10 +239,9 @@
     display: block;
 }
 
-/* Ratios utilisés par le calcul JS sur tablette / desktop. */
+/* Ratios utilisés par le calcul JS sur tablette / desktop */
 .project-grid-item.square {
     --media-ratio: 1 / 1;
-
 }
 
 .project-grid-item.portrait {
@@ -264,7 +256,6 @@
     --media-ratio: 16 / 9;
 }
 
-/* Formats horizontaux qui occupent davantage d'espace. */
 .project-grid-item.col-span-2 {
     grid-column: span 2;
 }
@@ -273,57 +264,18 @@
     grid-column: span 3;
 }
 
-/*
- * Le mode mobile ne cherche pas à reproduire l'asymétrie desktop.
- * Chaque média conserve simplement son ratio naturel.
- */
-@media (max-width: 767px) {
-    .project-grid-item {
-        grid-column: span 1 !important;
-    }
-}
-
-/* Tablette : 2 colonnes, avec les mêmes principes de proportions. */
-@media (min-width: 768px) {
-    .project-grid {
-        grid-template-columns: repeat(4, 1fr);
-    }
-   .project-grid-item.col-span-3 {
-        grid-column: span 2;
-    }
-
- 
-}
-
-/* Desktop : 3 colonnes, composition asymétrique. */
-@media (min-width: 1024px) {
-    .project-grid {
-        grid-template-columns: repeat(5, 1fr);
-    }
-
-    .project-grid-item.col-span-3 {
-        grid-column: span 3;
-  
-    }
-       .project-grid-item.col-span-5 {
-        grid-column: span 4;
-    }
-           .project-grid-item.col-span-2 {
-        grid-column: span 2;
-    }
-
-}
-
 /* ── PROJET SUIVANT ──────────────────────────────────────────────────────── */
 .next-project-link {
     display: block;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     text-decoration: none;
     color: var(--white);
     position: relative;
     overflow: hidden;
     opacity: 0;
     transform: translateY(24px);
+    background-color: rgba(255, 255, 255, 0.02);
     transition: opacity var(--transition-slow), transform var(--transition-slow), background-color var(--transition-fast);
 }
 
@@ -335,8 +287,8 @@
 .next-project-inner {
     max-width: 1600px;
     margin-inline: auto;
-    padding-top: clamp(32px, 5vh, 64px);
-    padding-bottom: clamp(32px, 5vh, 64px);
+    padding-top: clamp(36px, 6vh, 72px);
+    padding-bottom: clamp(36px, 6vh, 72px);
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -354,10 +306,10 @@
 
 .next-project-title {
     font-family: var(--font-serif);
-    font-size: clamp(1.5rem, 4vw, 3rem);
+    font-size: clamp(1.6rem, 4.5vw, 3.2rem);
     font-weight: 500;
     text-transform: uppercase;
-    line-height: 0.92;
+    line-height: 0.95;
     color: var(--white);
     transition: color var(--transition-fast);
 }
@@ -383,24 +335,92 @@
     transition: width var(--transition-fast);
 }
 
+/* Base du conteneur d'image en fondu */
 .next-image-wrap {
-    display: none;
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 60%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1;
+    
+    /* Dégradé doux : fondu progressif de l'arrière-plan vers l'image */
+    mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.5) 35%, black 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.5) 35%, black 100%);
 }
 
+.next-image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Conserve les vraies couleurs mais légèrement adoucies/saturées pour s'intégrer au fond */
+    filter: saturate(85%) contrast(105%);
+    transition: opacity var(--transition-smooth), transform var(--transition-smooth);
+}
 /* ── RESPONSIVE ──────────────────────────────────────────────────────────── */
 
-@media (min-width: 768px) {
-    .project-hero-image-wrap {
-        aspect-ratio: 21 / 9;
-        min-height: 400px;
+/* Mobile & Tablette (Jusqu'à 1023px) */
+/* ── RESPONSIVE MOBILE & TABLETTE (Jusqu'à 1023px) ───────────────────────── */
+@media (max-width: 1023px) {
+    /* Retrait du padding à droite : le texte reste aligné naturellement */
+    .next-project-inner {
+        padding-right: 0;
     }
 
-    .project-info {
-        grid-template-columns: minmax(200px, 260px) 1fr;
-        gap: 48px;
+    /* Conteneur d'image grand format mais très discret */
+    .next-image-wrap {
+        display: block;
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: 55%; /* Occupe le côté droit du bloc */
+        height: 100%;
+        transform: none; /* Annule le centrage vertical */
+        overflow: hidden;
+        pointer-events: none;
+        z-index: 1; /* Reste derrière le texte (qui a z-index: 2) */
+        
+        /* Masque en dégradé : fondu complet du noir de la page vers l'image */
+        mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.4) 40%, black 100%);
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.4) 40%, black 100%);
+    }
+
+    .next-image-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        /* Opacité très basse pour ne pas gêner la lecture */
+        opacity: 0.25; 
+        /* Intègre l'image au fond noir en noir & blanc texturé */
+        filter: grayscale(100%) contrast(110%);
+        mix-blend-mode: luminosity;
+        transition: opacity var(--transition-fast), transform var(--transition-fast);
+    }
+
+    /* Feedback tactile au toucher */
+    .next-project-link:active {
+        background-color: rgba(255, 255, 255, 0.06);
+    }
+
+    .next-project-link:active .next-image-wrap img {
+        opacity: 0.4;
+        transform: scale(1.03);
+    }
+
+    .next-project-link:active .next-project-arrow {
+        gap: 20px;
+    }
+
+    .next-project-link:active .next-project-line {
+        width: 36px;
     }
 }
-
+/* ── DESKTOP (1024px et plus) ────────────────────────────────────────────── */
 @media (min-width: 1024px) {
     .project-hero-image-wrap {
         max-height: 60vh;
@@ -409,6 +429,22 @@
 
     .project-info {
         gap: 80px;
+    }
+
+    .project-grid {
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+    .project-grid-item.col-span-3 {
+        grid-column: span 3;
+    }
+
+    .project-grid-item.col-span-5 {
+        grid-column: span 4;
+    }
+
+    .project-grid-item.col-span-2 {
+        grid-column: span 2;
     }
 
     .back-link:hover {
@@ -420,8 +456,23 @@
         width: 26px;
     }
 
+    /* Comportement au Survol Desktop */
+    .next-project-link {
+        background-color: transparent;
+        border-bottom: none;
+    }
+
+    .next-image-wrap {
+        width: 50%;
+    }
+
+    .next-image-wrap img {
+        opacity: 0;
+        transform: translateX(40px) scale(1.02);
+    }
+
     .next-project-link:hover {
-        background-color: rgba(255, 255, 255, 0.02);
+        background-color: rgba(255, 255, 255, 0.015);
     }
 
     .next-project-link:hover .next-project-title,
@@ -437,29 +488,8 @@
         width: 36px;
     }
 
-    .next-image-wrap {
-        display: block;
-        position: absolute;
-        right: var(--pad-lg);
-        top: 50%;
-        transform: translateY(-50%) translateX(30px);
-        width: clamp(220px, 20vw, 320px);
-        height: clamp(280px, 26vw, 400px);
-        overflow: hidden;
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity var(--transition-fast), transform var(--transition-fast);
-        z-index: 1;
-    }
-
-    .next-image-wrap img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-
-    .next-project-link:hover .next-image-wrap {
-        opacity: 1;
-        transform: translateY(-50%) translateX(0);
+    .next-project-link:hover .next-image-wrap img {
+        opacity: 0.45; /* Apparition teintée et fondue au survol */
+        transform: translateX(0) scale(1);
     }
 }
