@@ -40,7 +40,7 @@ const PROJECTS_DATA = [
         type: "Animation gravure",
         discipline: "Gravure artisanale",
         description: "Prestations de gravure événementielle en direct au cœur de Paris...",
-        imageHero: "image/home/anim-calli(1).webp",
+      imageHero: "image/projets/animation/anim-calli(1).webp",
         gallery: [
             { src: "image/anim-baton(1).webp", layout: "landscape" }
         ]
@@ -57,7 +57,7 @@ const PROJECTS_DATA = [
         type: "Graphisme",
         discipline: "Identité visuelle",
         description: "Description de l'identité visuelle créée pour Lucie Allard Design...",
-        imageHero: "image/home/logo.webp",
+        imageHero: "image/projets/lucie/lucie-3.webp",
         gallery: [
             { src: "image/projets/lucie/gif.gif", layout: "portrait col-span-2" },
             { src: "image/projets/lucie/lucie-3.webp", layout: "landscape col-span-3" },
@@ -77,7 +77,7 @@ const PROJECTS_DATA = [
         type: "Artisanat",
         discipline: "Design & Artisanat",
         description: "Description de la gravure de la carafe Riedel...",
-        imageHero: "image/home/thuizat.webp",
+        imageHero: "image/projets/thuizat/client-logo(1).webp",
         gallery: [
             { src: "image/projets/thuizat/client-logo(2).webp", layout: "square" }
         ]
@@ -113,7 +113,7 @@ const PROJECTS_DATA = [
         type: "Graphisme & Illustration",
         discipline: "Design graphique",
         description: "Recherche graphique, création personnelle et expérimentations autour du geste...",
-        imageHero: "image/projets/archi/archi-1.webp",
+        imageHero: "image/projets/archi/archi1.webp",
         gallery: [
             { src: "image/projets/archi/archi3.webp", layout: "portrait" },
             { src: "image/projets/archi/archi3.webp", layout: "portrait" },
@@ -123,8 +123,8 @@ const PROJECTS_DATA = [
     },
     {
         id: "tasaki",
-        title: "Posters Illustrés",
-        category: "graphisme",
+        title: "Oeufs de Pâques",
+   category: "artisanat",
         client: "",
         prestations: [],
         displayCategory: "Conception graphique",
@@ -132,7 +132,7 @@ const PROJECTS_DATA = [
         type: "Graphisme & Illustration",
         discipline: "Design graphique",
         description: "Recherche graphique, création personnelle et expérimentations autour du geste...",
-        imageHero: "image/projets/archi/archi-1.webp",
+        imageHero: "image/projets/tasaki/tasaki.webp",
         gallery: [
             { src: "image/projets/archi/archi3.webp", layout: "portrait" },
             { src: "image/projets/archi/archi3.webp", layout: "portrait" },
